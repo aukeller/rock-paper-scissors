@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <meta charset="UTF-8"/>
+    </head>
+
+<body>
+    <script>
+        function computerPlay() {
+            
+            let randomNumber = Math.floor(Math.random() * 3);
+            
+            if (randomNumber == 0) {
+                return 'Rock';
+            }
+            else if (randomNumber == 1) {
+                return 'Paper';
+            }
+            else {
+                return 'Scissors';
+            }
+    
+        }
+        
+        cpuScore = 0
+        playerScore = 0
+
+
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == 'rock') {
+                if (computerSelection == 'Rock') {
+                    console.log('It\'s a tie! Both rock!');
+                }
+                else if (computerSelection == 'Paper') {
+                    console.log('You lose! Paper beats rock');
+                    cpuScore ++;
+                    console.log('CPU ' + cpuScore);
+
+                }
+                else {
+                    console.log('You win! Rock beats Scissors!');
+                    playerScore ++;
+                    console.log('Your score: ' + playerScore);
+                }
+            }
+            else if (playerSelection == 'scissors') {
+                if (computerSelection == 'Rock') {
+                    console.log('You lose! Rock beats Scissors!');
+                    cpuScore ++;
+                    console.log('CPU ' + cpuScore);
+
+                }
+                else if (computerSelection == 'Paper') {
+                    console.log('You win! Scissors beats paper!');
+                    playerScore ++;
+                    console.log('Your score: ' + playerScore);
+                }
+                else {
+                    console.log('It\'s a tie, both scissors!');
+                }
+            }
+            else {
+                if (computerSelection == 'Rock') {
+                    console.log('You win! Paper beats Rock!');
+                    playerScore ++;
+                    console.log('Your score: ' + playerScore);
+
+                }
+                else if (computerSelection == 'Paper') {
+                    console.log('It\'s a tie! Both paper!');
+                }
+                else {
+                    console.log('You lose! Scissors beats paper!');
+                    cpuScore ++;
+                    console.log('CPU ' + cpuScore);
+            } 
+        }
+    }
+        
+        function game() {
+            for(i = 0; i < 5; i++) {
+                let playerInput = prompt('Rock, paper, or scissors?').toLowerCase();
+
+                if ((playerInput === 'rock') || (playerInput === 'paper') || (playerInput == 'scissors')) {
+                    playRound(playerInput, computerPlay());
+                } else {
+                    alert('Please choose rock, paper, or scissors');
+                    i--;
+                }
+            }
+            if (playerScore > cpuScore) {
+            console.log('Yay, you won!')
+        }
+            else if (playerScore < cpuScore) {
+                console.log('You lose :{') 
+        
+        }
+            else {
+                console.log('It\'s a tie!')
+        }
+            console.log('CPU ' + cpuScore + ' ' + 'Your Score ' + playerScore);
+        }
+        window.addEventListener('load', game);  
+        
+        
+    </script>
+</body>
+</html>
